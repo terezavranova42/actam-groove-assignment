@@ -63,6 +63,12 @@ def open_hat(duration=0.30, tau=0.070, amplitude=0.15, sample_rate=SR):
     return edge_fade(vca(source, shape), sample_rate=sample_rate)
 
 
+def crash(duration=1.0, tau=0.25, amplitude=0.15, sample_rate=SR):
+    source = noise(duration, amplitude=amplitude, sample_rate=sample_rate)
+    shape = envelope_exp(duration, tau=tau, sample_rate=sample_rate)
+    return edge_fade(vca(source, shape), sample_rate=sample_rate)
+    
+
 def kick_raw(
     duration=0.25, start_hz=180, end_hz=45,
     pitch_tau=0.025, amp_tau=0.060,
